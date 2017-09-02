@@ -20,7 +20,7 @@ Please access to `http://localhost:4000/graphql`.
 ```
 mutation {
   addUser(firstName: "name", age: 30) {
-    firstName,
+    firstName
     age
   }
 }
@@ -40,9 +40,9 @@ mutation {
 ```
 {
   company(id: "1") {
-    id,
-    name,
-    description,
+    id
+    name
+    description
     users {
       firstName
     }
@@ -54,8 +54,8 @@ mutation {
 ```
 mutation {
   editUser(id: "0", firstName: "name") {
-    id,
-    age,
+    id
+    age
     firstName
   }
 }
