@@ -16,7 +16,17 @@ $ npm run start
 ## sample query
 Please access to `http://localhost:4000/graphql`.
 
-### get query
+### create query
+```
+mutation {
+  addUser(firstName: "name", age: 30) {
+    firstName,
+    age
+  }
+}
+```
+
+### read query
 ##### simple pattern
 ```
 {
@@ -43,9 +53,10 @@ Please access to `http://localhost:4000/graphql`.
 ### update query
 ```
 mutation {
-  addUser(firstName: "name", age: 30) {
-    firstName,
-    age
+  editUser(id: "0", firstName: "name") {
+    id,
+    age,
+    firstName
   }
 }
 ```
