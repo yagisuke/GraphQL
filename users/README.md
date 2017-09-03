@@ -1,4 +1,4 @@
-# GraphQL with React
+# GraphQL on Express
 
 ## users app
 ```shell
