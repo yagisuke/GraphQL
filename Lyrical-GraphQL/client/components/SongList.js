@@ -35,13 +35,4 @@ class SongList extends Component {
   }
 }
 
-const query = gql`
-  {
-    songs {
-      id
-      title
-    }
-  }
-`;
-
 export default graphql(query)(SongList);
