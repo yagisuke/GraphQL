@@ -10,7 +10,6 @@ class SongList extends Component {
       .then(() => this.props.data.refetch());
   }
 
-
   renderSongs() {
     return this.props.data.songs.map(({ id, title }, index) => {
       return (
