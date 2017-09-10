@@ -1,32 +1,48 @@
 import React, { Component } from 'react';
+import gql from 'graphql-tag';
+import { graphql } from 'react-apollo';
 
 class LyricList extends Component {
   onLike(id) {
-      console.log(id)
+    this.props.mutate({ variables: { id } })
   }
 
   renderLyrics() {
-    return this.props.lyrics.map(({ id, content }, index) => {
+    return this.props.lyrics.map(({ id, content, likes }, index) => {
       return (
         <li key={index} className="collection-item">
           {content}
-          <i
-            className="material-icons"
-            onClick={() => this.onLinke(id)}
+          <a
+            href="javascript: void(0)"
+            className="secondary-content"
+            onClick={() => this.onLike(id)}
           >
-            thumb_up
-          </i>
+            <i className="material-icons">
+              thumb_up
+            </i>
+            <span className="badge">{likes}</span>
+          </a>
         </li>
       );
     });
   }
 
   render() {
-    console.log(this.props)
     return (
-      <ul className="collection">{this.renderLyrics()}</ul>
+      <ul className="collection">
+        {this.renderLyrics()}
+      </ul>
     )
   }
 }
 
-export default LyricList;
+const mutation = gql`
+  mutation LikeLyric($id: ID) {
+    likeLyric(id: $id) {
+      id
+      likes
+    }
+  }
+`;
+
+export default graphql(mutation)(LyricList);
